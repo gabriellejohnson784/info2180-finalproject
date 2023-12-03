@@ -1,0 +1,45 @@
+header{
+    background-color: black;
+    color:white;
+    display:flex;
+    flex-direction: row;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 10px;
+}
+
+img{
+    width: 30px;
+    height:30px;
+    margin-top: 9px;
+    margin-bottom: 0px;
+}
+
+#results{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+}
+input{
+    width:500px;
+    height:30px;
+}
+button{
+    background-color: blueviolet;
+    color:white;
+    width:400px;
+    height:30px;
+    padding-left:20px;
+    padding-right:20px;
+}
+footer{
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 10px;
+    color:gray;
+}
