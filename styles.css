@@ -1,10 +1,10 @@
-header{
+.nav-bar{
     background-color: black;
     color:white;
     display:flex;
     flex-direction: row;
     font-family:Georgia, 'Times New Roman', Times, serif;
-    font-size: 10px;
+    font-size: 14px;
 }
 
 img{
@@ -14,7 +14,7 @@ img{
     margin-bottom: 0px;
 }
 
-#results{
+.login-box{
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -24,13 +24,15 @@ img{
 input{
     width:500px;
     height:30px;
+    margin:10px;
 }
 button{
     background-color: blueviolet;
     color:white;
-    width:400px;
+    width:300px;
     height:30px;
-    padding-left:20px;
+    margin-left: 120px;
+    padding-left:10px;
     padding-right:20px;
 }
 footer{

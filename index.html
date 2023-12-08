@@ -1,27 +1,32 @@
-<!DOCUTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-		<title>Dolphin CRM</title>
-
-		<link href="styles.css" type="text/css" rel="stylesheet" />
-		<script src="styles.js" type="text/javascript"></script>
-	</head>
-    <body>
-        <header>
-            <img src="dolphinlogo.png" alt="Dolphin CRM logo">
-            <h1> Dolphin CRM</h1>
-        </header>
-
-        <main>
-            <!–– This is where the results will be displayed ––>
-            <div id="results"></div>
-        </main>
-        <footer>
-            <hr>
-            <p>Copyright @2022 Dolphin CRM</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Login - Dolphin CRM</title>
+</head>
+<body>
+    <div class="login">
+        <nav class="nav-bar">
+            <img src="dolphinlogo.png" alt="Dolphin CRM">
+            <p>Dolphin CRM</p>
+        </nav>
+        <div class="login-box">
+            <h1>Login</h1>
+            <?php if ($errorMessage): ?>
+                <p class="error"><?php echo htmlspecialchars($errorMessage); ?></p>
+            <?php endif; ?>
+            <form action="login.php" method="post" id="loginForm">
+                <input type="email" name="email" placeholder="Email address" required><br>
+                <input type="password" name="password" placeholder="Password" required><br>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <footer class="footer">
+            Copyright & Copyright 2022 Dolphin CRM
         </footer>
-    </body>
-   
-    
+    </div>
+    <!-- <script src="script.js"></script> -->
+</body>
 </html>
