@@ -30,7 +30,7 @@ if (!isset($_SESSION['user'])) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $contactId = $_POST['contactId'] ?? 0;
-    $userId = $_SESSION['user']['id']; // Assuming user's ID is stored in the session
+    $userId = $_POST['userId'] ?? '';
 
     // Update the contact
     $stmt = $pdo->prepare("UPDATE Contacts SET assigned_to = ? WHERE id = ?");

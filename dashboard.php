@@ -110,7 +110,31 @@ $contacts = $stmt->fetchAll();
             </div>
         </div>
     </div>
- 
+    <script>
+    function filterContacts(filterType) {
+    // Get all filter options
+    var filters = document.querySelectorAll('.filter-option');
+
+    // Remove the 'filter-clicked' class from all filters
+    filters.forEach(function(filter) {
+        filter.classList.remove('filter-clicked');
+    });
+
+    // Add the 'filter-clicked' class to the clicked filter
+    document.getElementById('filter-' + filterType.toLowerCase().replace(/\s+/g, '-')).classList.add('filter-clicked');
+
+    var rows = document.getElementById('userTableBody').rows;
+    for (var i = 0; i < rows.length; i++) {
+        var typeCell = rows[i].cells[3].textContent;
+        if (filterType === 'all' || typeCell === filterType) {
+            rows[i].style.display = '';
+        } else {
+            rows[i].style.display = 'none';
+        }
+    }
+}
+
+</script>
 <script src="script.js"></script>
 </body>
 </html>
