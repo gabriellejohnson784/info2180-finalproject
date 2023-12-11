@@ -22,6 +22,10 @@ $options = [
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     PDO::ATTR_EMULATE_PREPARES => false,
 ];
+if (isset($_GET['userid'])) {
+    $userID = $_GET['userid'];
+    // Do something with $userID
+}
 
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
@@ -53,10 +57,10 @@ $contacts = $stmt->fetchAll();
         </nav>
         <div class="side-bar">
             <ul>
-                <li><a href="dashboard.php"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">home</span> Home</a></li>
-                <li><a href="new_contact.php"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">person_add</span> New Contact</a></li>
-                <li><a href="view_users.php"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">group</span> Users</a></li>
-                <li><a href="logout.php"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">logout</span> Logout</a></li>
+                <li><a href="dashboard.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']);?>"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">home</span> Home</a></li>
+                <li><a href="new_contact.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']);?>"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">person_add</span> New Contact</a></li>
+                <li><a href="view_users.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']);?>"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">group</span> Users</a></li>
+                <li><a href="logout.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']);?>"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">logout</span> Logout</a></li>
             </ul>
         </div>
 
@@ -95,7 +99,7 @@ $contacts = $stmt->fetchAll();
                             <td><?php echo htmlspecialchars($contact['email']); ?></td>
                             <td><?php echo htmlspecialchars($contact['company']); ?></td>
                             <td><span  class="<?php echo htmlspecialchars($contact['type']); ?>"><?php echo htmlspecialchars($contact['type']); ?></span></td>
-                            <td>View</td>
+                            <td><a href="view_contact_details.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']); ?>&contactId=<?php echo htmlspecialchars($contact['id']); ?>">View</a>  </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -106,30 +110,7 @@ $contacts = $stmt->fetchAll();
             </div>
         </div>
     </div>
-    <script>
-    function filterContacts(filterType) {
-    // Get all filter options
-    var filters = document.querySelectorAll('.filter-option');
-
-    // Remove the 'filter-clicked' class from all filters
-    filters.forEach(function(filter) {
-        filter.classList.remove('filter-clicked');
-    });
-
-    // Add the 'filter-clicked' class to the clicked filter
-    document.getElementById('filter-' + filterType.toLowerCase().replace(/\s+/g, '-')).classList.add('filter-clicked');
-
-    var rows = document.getElementById('userTableBody').rows;
-    for (var i = 0; i < rows.length; i++) {
-        var typeCell = rows[i].cells[3].textContent;
-        if (filterType === 'all' || typeCell === filterType) {
-            rows[i].style.display = '';
-        } else {
-            rows[i].style.display = 'none';
-        }
-    }
-}
-
-</script>
+ 
+<script src="script.js"></script>
 </body>
 </html>

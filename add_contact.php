@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $company = $_POST['company'] ?? '';
     $type = $_POST['type'] ?? '';
     $assigned_to = $_POST['assigned_to'] ?? ''; 
+    $createdBy = $_POST['createdBy'] ?? '';
 
     // Validation logic here (ensure fields are filled out, etc.)
     if (empty($firstname) || empty($lastname) || empty($email) || empty($telephone)|| empty($company)|| empty($type)|| empty($assigned_to)) {
@@ -46,8 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Prepare SQL and bind parameters
-    $stmt = $pdo->prepare("INSERT INTO Contacts (title, firstname, lastname, email, telephone, company, type, assigned_to, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())");
-    $stmt->execute([$title, $firstname, $lastname, $email, $telephone, $company, $type, $assigned_to]);
+    // $stmt = $pdo->prepare("INSERT INTO Contacts (title, firstname, lastname, email, telephone, company, type, assigned_to, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())");
+    // $stmt->execute([$title, $firstname, $lastname, $email, $telephone, $company, $type, $assigned_to]);
+    $stmt = $pdo->prepare("INSERT INTO Contacts (title, firstname, lastname, email, telephone, company, type, assigned_to, created_by, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())");
+    $stmt->execute([$title, $firstname, $lastname, $email, $telephone, $company, $type, $assigned_to, $createdBy]);
 
     echo json_encode(['success' => true, 'message' => 'Contact added successfully']);
 } else {

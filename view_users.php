@@ -18,6 +18,11 @@ $options = [
     PDO::ATTR_EMULATE_PREPARES => false,
 ];
 
+if (isset($_GET['userid'])) {
+    $userID = $_GET['userid'];
+    // Do something with $userID
+}
+
 // Fetch users from the database
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
@@ -45,10 +50,10 @@ try {
         </nav>
         <div class="side-bar">
             <ul>
-                <li><a href="dashboard.php"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">home</span> Home</a></li>
-                <li><a href="new_contact.php"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">person_add</span> New Contact</a></li>
-                <li><a href="view_users.php"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">group</span> Users</a></li>
-                <li><a href="logout.php"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">logout</span> Logout</a></li>
+                <li><a href="dashboard.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']);?>"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">home</span> Home</a></li>
+                <li><a href="new_contact.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']);?>"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">person_add</span> New Contact</a></li>
+                <li><a href="view_users.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']);?>"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">group</span> Users</a></li>
+                <li><a href="logout.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']);?>"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">logout</span> Logout</a></li>
             </ul>
         </div>
         <div class="view-users-box">

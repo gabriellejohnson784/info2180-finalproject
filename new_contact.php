@@ -10,7 +10,10 @@ $charset = 'utf8mb4';
 
 // Data Source Name
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-
+if (isset($_GET['userid'])) {
+    $userID = $_GET['userid'];
+    // Do something with $userID
+}
 // Options for PDO
 $options = [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -47,10 +50,10 @@ $users = $stmt->fetchAll();
         </nav>
         <div class="side-bar">
             <ul>
-                <li><a href="dashboard.php"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">home</span> Home</a></li>
-                <li><a href="new_contact.php"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">person_add</span> New Contact</a></li>
-                <li><a href="view_users.php"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">group</span> Users</a></li>
-                <li><a href="logout.php"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">logout</span> Logout</a></li>
+                <li><a href="dashboard.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']);?>"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">home</span> Home</a></li>
+                <li><a href="new_contact.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']);?>"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">person_add</span> New Contact</a></li>
+                <li><a href="view_users.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']);?>"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">group</span> Users</a></li>
+                <li><a href="logout.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']);?>"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">logout</span> Logout</a></li>
             </ul>
         </div>
         <div class="new-contact-box">

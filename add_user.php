@@ -22,29 +22,28 @@ try {
 }
 
 // Extract data from POST request
-$firstname = $_POST['firstname'] ?? 'test';
-$lastname = $_POST['lastname'] ?? 'tess';
-$email = $_POST['email'] ?? 'test@test.com';
-$password = $_POST['password'] ?? 'password123';
-$role = $_POST['role'] ?? 'Administrator';
-// Validation logic here (ensure fields are filled out, etc.)
-if (empty($firstname) || empty($lastname) || empty($email)) {
-    echo json_encode(['success' => false, 'message' => 'Please fill out required fields']);
-    exit;
-}
+$firstname = $_POST['firstname'] ?? '';
+$lastname = $_POST['lastname'] ?? '';
+$email = $_POST['email'] ?? '';
+$password = $_POST['password'] ?? '';
+$role = $_POST['role'] ?? '';
 
-// Validate email format
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo json_encode(['success' => false, 'message' => 'Invalid email format']);
-    exit;
-}
+// Hash the password using MySQL SHA2 function
+// We use 256 bits for the hash length in this example
 
-// Hash the password
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+// Hash the password using MySQL SHA2 function
+$hashedPasswordSql = "SHA2(?, 256)";
 
 // Prepare SQL and bind parameters
-$stmt = $pdo->prepare("INSERT INTO Users (firstname, lastname, email, password, role, created_at) VALUES (?, ?, ?, ?, ?, NOW())");
-$stmt->execute([$firstname, $lastname, $email, $hashedPassword, $role]);
+$stmt = $pdo->prepare("INSERT INTO Users (firstname, lastname, email, password, role, created_at) VALUES (?, ?, ?, $hashedPasswordSql, ?, NOW())");
+$stmt->bindParam(1, $firstname);
+$stmt->bindParam(2, $lastname);
+$stmt->bindParam(3, $email);
+$stmt->bindParam(4, $password); // Bind the actual password
+$stmt->bindParam(5, $role);
+
+$stmt->execute();
 
 echo json_encode(['success' => true, 'message' => 'User added successfully']);
 ?>

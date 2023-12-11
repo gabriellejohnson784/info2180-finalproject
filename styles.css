@@ -28,6 +28,12 @@
     width: 100vw;
     position: relative;
 }
+.view_contact_details{
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    
+}
 .dashboard{
     height: 100vh;
     width: 100vw;
@@ -303,7 +309,7 @@ thead tr {
     box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
     /* border-collapse: collapse; */
     margin-top: 5%;
-    height: 90%;
+    height: auto;
   
 }
 
@@ -315,10 +321,10 @@ thead tr {
     box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.5);
     /* border: 1px solid black; */
     height: 2.8rem;
-    
 }
 .table-filter-box td{
     color: grey;
+    overflow: hidden;
 }
 .table-filter-box th{
     font-weight: bold;
@@ -451,4 +457,159 @@ thead tr {
 }
 #contact-title{
     width:5rem ;
+}
+.view_contact_details_box{
+    margin-left: 15%;
+    height: 90%;
+    width: 80%;
+    padding-left: 2%;
+    padding-top: 2%;
+    /* border: 1px solid black; */
+}
+.contact-details{
+    width: 100%;
+    height: 20%;
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.contact-details img{
+    height: 8vh;
+    width: 8vh;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+.img-name{
+    height: 100%;
+    display: flex;
+    gap: 12px;
+    /* margin-top: 5%; */
+  
+}
+.name-created-at h1{
+    margin-bottom: %;
+}
+.name-created-at p{
+    color: grey;
+}
+.name-created-at{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+    /* justify-content: center; */
+}
+.button-controls{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+.button-controls button{
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 6px;
+    color: black;
+    margin-top: -8%;
+}
+#assign-to-me-btn{
+    background-color:rgb(40, 207, 40);
+
+}
+#assign-new-role-btn{
+    background-color: yellow;
+}
+.personal-contact-details{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Creates two columns of equal width */
+    grid-template-rows: 1fr 1fr; /* Creates two rows of equal height */
+    gap: 24px; /* This adds space between the grid items */
+    padding: 24px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+    border-radius: 6px;
+}
+.note-section{
+    margin-top: 2%;
+    width: 100%;
+    min-height: 50%;
+    /* border: 1px solid black;
+     */
+     border-radius: 6px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+    padding-bottom: 32px;
+   
+}
+.note-icon{
+    width: 100%;
+    padding: 12px;
+    /* height: 12%; */
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+}
+.add-note{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+.add-note button{
+    align-self: flex-end;
+    margin-right: 2%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border: none;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 6px;
+}
+.add-note label{
+    align-self: flex-start;
+    margin-left: 1%;
+    font-weight: bold;
+    color: rgb(39, 38, 38);
+}
+.add-note textarea{
+    width: 98%;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4);
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    border-color: grey;
+    padding: 16px;
+}
+.note-display{
+    width: 100%;
+    height: auto;
+}
+.note{
+    width: 100%;
+    /* border: 1px solid black; */
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 16px;
+    padding-right: 24px;
+}
+.note-comment{
+    padding-top: 16px;
+    padding-bottom: 16px;
+    color: grey;
+}
+.note-author{
+    font-weight: bold;
+}
+.note-meta{
+    color: grey;
 }

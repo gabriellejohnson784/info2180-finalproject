@@ -1,13 +1,16 @@
 <?php
-//session_start();
+session_start();
 
 // Here you can add your PHP code for any server-side logic.
 // For instance, checking if the user is logged in.
-/*if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user'])) {
     header('Location: login.php');
     exit;
-} */
-
+} 
+if (isset($_GET['userid'])) {
+    $userID = $_GET['userid'];
+    // Do something with $userID
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,10 +29,10 @@
         </nav>
         <div class="side-bar">
             <ul>
-                <li><a href="dashboard.php"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">home</span> Home</a></li>
-                <li><a href="new_contact.php"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">person_add</span> New Contact</a></li>
-                <li><a href="view_users.php"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">group</span> Users</a></li>
-                <li><a href="logout.php"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">logout</span> Logout</a></li>
+                <li><a href="dashboard.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']);?>"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">home</span> Home</a></li>
+                <li><a href="new_contact.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']);?>"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">person_add</span> New Contact</a></li>
+                <li><a href="view_users.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']);?>"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">group</span> Users</a></li>
+                <li><a href="logout.php?userId=<?php echo htmlspecialchars($_SESSION['user']['id']);?>"><span class="material-icons-outlined icon" style="font-size: 2.2rem;">logout</span> Logout</a></li>
             </ul>
         </div>
         <div class="new-user-box">
